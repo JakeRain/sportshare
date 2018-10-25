@@ -10,8 +10,35 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    buildTypes {
+    signingConfigs {
+
+        debug {
+            // No debug config
+            storeFile file("SportsShare.jks")
+            storePassword "123456"
+            keyAlias "SportsShare"
+            keyPassword "123456"
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
         release {
+            storeFile file("SportsShare.jks")
+            storePassword "123456"
+            keyAlias "SportsShare"
+            keyPassword "123456"
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+        }
+        release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

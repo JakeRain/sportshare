@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView mTvShare;
     private TextView mTvShareText;
     private TextView mTvShareImg;
-    private UMImage thumb,thumb1,thumb2;
+    private TextView mTvShareImgWeixin;
+    private UMImage thumb;
     String iamge_url = "https://hbimg.b0.upaiyun.com/b3b8b5a85bdb328fd14cc1c2e93f07d911ed315b2f784-SPCBAH_fw658";
 
 
@@ -42,23 +43,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String[] mPermissionList = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.CALL_PHONE,Manifest.permission.READ_LOGS,Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.SET_DEBUG_APP,Manifest.permission.SYSTEM_ALERT_WINDOW,Manifest.permission.GET_ACCOUNTS,Manifest.permission.WRITE_APN_SETTINGS};
             ActivityCompat.requestPermissions(this,mPermissionList,123);
         }
-        thumb =  new UMImage(this, R.mipmap.girl);
+        thumb =  new UMImage(this, R.mipmap.ic_girl);
         thumb.setThumb(new UMImage(this, R.mipmap.share));
-        thumb1 =  new UMImage(this, R.mipmap.girl1);
-        thumb1.setThumb(new UMImage(this, R.mipmap.share));
-        thumb2 =  new UMImage(this, R.mipmap.girl2);
-        thumb2.setThumb(new UMImage(this, R.mipmap.share));
-
-
 
     }
     private void initView() {
         mTvShare = findViewById(R.id.tv_share);
         mTvShareText = findViewById(R.id.tv_share_text);
         mTvShareImg = findViewById(R.id.tv_share_img);
+        mTvShareImgWeixin = findViewById(R.id.tv_share_img_weixin);
         mTvShare.setOnClickListener(this);
         mTvShareText.setOnClickListener(this);
         mTvShareImg.setOnClickListener(this);
+        mTvShareImgWeixin.setOnClickListener(this);
 
     }
     @Override
@@ -68,6 +65,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 new ShareAction(MainActivity.this).withText("hello")
                         .setDisplayList(SHARE_MEDIA.WEIXIN,SHARE_MEDIA.WEIXIN_CIRCLE)
                         .setCallback(umShareListener).open();
+                break;
+            case R.id.tv_share_img_weixin:
+                new ShareAction(MainActivity.this).withMedia(thumb)
+                        .setPlatform(SHARE_MEDIA.WEIXIN)
+                        .setCallback(umShareListener).share();
                 break;
             case R.id.tv_share_text:
                 new ShareAction(MainActivity.this).withText("来自weishare的分享")
