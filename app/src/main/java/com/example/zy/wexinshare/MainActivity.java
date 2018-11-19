@@ -62,10 +62,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.tv_share:
+//                new ShareAction(MainActivity.this)
+//                        .setPlatform(SHARE_MEDIA.WEIXIN)//传入平台
+//                        .withText("hello")//分享内容
+//                        .setCallback(umShareListener)//回调监听器
+//                        .share();
+
+
                 new ShareAction(MainActivity.this).withText("hello")
                         .setDisplayList(SHARE_MEDIA.WEIXIN,SHARE_MEDIA.WEIXIN_CIRCLE)
                         .setCallback(umShareListener).open();
-                break;
+            break;
             case R.id.tv_share_img_weixin:
                 new ShareAction(MainActivity.this).withMedia(thumb)
                         .setPlatform(SHARE_MEDIA.WEIXIN)
