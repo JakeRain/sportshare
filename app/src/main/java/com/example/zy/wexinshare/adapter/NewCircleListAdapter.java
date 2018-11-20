@@ -1,7 +1,6 @@
 package com.example.zy.wexinshare.adapter;
 
 import android.content.Context;
-import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,16 +10,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.zy.wexinshare.R;
-import com.example.zy.wexinshare.bean.MyCircle;
+import com.example.zy.wexinshare.bean.MyCricleEntity;
 
 import java.util.List;
 
-public class CircleListAdapter extends RecyclerView.Adapter<CircleListAdapter.CircleViewHolder> {
+/**
+ * Created by Administrator on 2018/11/20.
+ */
+
+public class NewCircleListAdapter extends RecyclerView.Adapter<NewCircleListAdapter.NewCircleViewHolder> {
 
     LayoutInflater inflater;
-    List<MyCircle> beans;
+    List<MyCricleEntity.SportBean> beans;
     Context context;
-    public CircleListAdapter(List<MyCircle > beans,Context context) {
+    public NewCircleListAdapter(List<MyCricleEntity.SportBean> beans, Context context) {
         this.beans = beans;
         inflater = LayoutInflater.from(context);
         this.context = context;
@@ -28,19 +31,16 @@ public class CircleListAdapter extends RecyclerView.Adapter<CircleListAdapter.Ci
 
 
     @Override
-    public CircleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public NewCircleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.load_item,parent,false);
-        return new CircleViewHolder(view);
+        return new NewCircleViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(CircleViewHolder holder, int position) {
-        MyCircle circle = beans.get(position);
-        //照片太大了
+    public void onBindViewHolder(NewCircleViewHolder holder, int position) {
         holder.iv.setImageResource(R.drawable.thumb);
-//        holder.iv.setImageBitmap(BitmapFactory.decodeResource(context.getResources(),R.drawable.nonepic));
-        holder.tv_name.setText(circle.name);
-        holder.tv_msg.setText(circle.msg);
+        holder.tv_name.setText(beans.get(position).getName());
+        holder.tv_msg.setText(beans.get(position).getMsg());
         Log.e("onBindViewHolder" ,"数据已经传输到onbindviewholder");
 
     }
@@ -50,11 +50,11 @@ public class CircleListAdapter extends RecyclerView.Adapter<CircleListAdapter.Ci
         return beans.size();
     }
 
-    static class CircleViewHolder extends RecyclerView.ViewHolder{
+   static class NewCircleViewHolder extends RecyclerView.ViewHolder{
         ImageView iv;
         TextView tv_name;
         TextView tv_msg;
-        public CircleViewHolder(View itemView) {
+        public NewCircleViewHolder(View itemView) {
             super(itemView);
             iv = (ImageView) itemView.findViewById(R.id.circle_iv);
             tv_name = (TextView) itemView.findViewById(R.id.circle_name);

@@ -1,6 +1,7 @@
 package com.example.zy.wexinshare;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.umeng.commonsdk.UMConfigure;
 import com.umeng.socialize.PlatformConfig;
@@ -11,9 +12,15 @@ import com.umeng.socialize.PlatformConfig;
 
 public class MyApplication extends Application {
 
+    private static Context mContext;
+
+    public static Context getInstance() {
+        return mContext;
+    }
     @Override
     public void onCreate() {
         super.onCreate();
+        mContext = getApplicationContext();
         initData();
     }
 

@@ -1,30 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="50dp">
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:id="@+id/circle_iv"
-        />
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_gravity="center_vertical"
+        android:id="@+id/circle_iv" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_gravity="bottom">
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="5dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/circle_name"
+            android:singleLine="true"
+            android:maxLines="1"
             android:text="这是数据的名字-----"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/circle_msg"
+            android:singleLine="true"
+            android:maxLines="1"
             android:text="这是数据的具体信息------"/>
 
     </LinearLayout>
-
-
-</FrameLayout>
+</LinearLayout>
